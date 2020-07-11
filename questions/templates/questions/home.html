@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-2 p-4" id="body-left">
+            
+        </div>
+        <div class="col-md-7 p-4" id="body-center">
+
+            {% include 'questions/question-list.html' %}
+
+        </div>
+        <div class="col-md-3 p-4" id="body-right">
+
+        </div>
+    </div>
+{% endblock content %}
