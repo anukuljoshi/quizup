@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block center-content %}
+    <div class="card pb-4">
+        <div class="card-body">
+            <h4 class="card-title">{{ ques_object.question }}</h4>
+            <span class="small">{{ ques_object.timestamp|timesince }} ago</span>
+            <span class="small float-right">- {{ ques_object.author.username }}</span>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">{{ ans_object_list.count }} Answers <hr></h5>
+                {% for ans in ans_object_list %}
+                    <p>
+                        {{ ans.answer }}
+                    </p>
+                    <span class="small">
+                        {{ ans.timestamp|timesince }} ago
+                    </span>
+                    <span class="small float-right">
+                        {% if ans.author %}
+                            {{ ans.author.username }}
+                        {% else %}
+                            {{ "[deleted]" }}
+                        {% endif %}
+                    </span>
+                    <hr>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock center-content %}

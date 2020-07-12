@@ -13,6 +13,7 @@
         <style>
             body{
                 background-color:#160f30;
+                color: #eae7af;
             }
             .navbar{
                 background-color:#241663;
@@ -54,9 +55,23 @@
         {% include 'navbar.html' %}
 
         <div class="container-fluid">
-            {% block content %}
-            
-            {% endblock content %}
+            <div class="row">
+                <div class="col-md-2 p-4" id="body-left">
+                    {% block left-content %}
+                
+                    {% endblock left-content %}
+                </div>
+                <div class="col-md-7 p-4" id="body-center">
+                    {% block center-content %}
+                
+                    {% endblock center-content %}        
+                </div>
+                <div class="col-md-3 p-4" id="body-right">
+                    {% block right-content %}
+                
+                    {% endblock right-content %}
+                </div>
+            </div>
         </div>
 
         <!-- Optional JavaScript -->
