@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Question, Answer
 
@@ -11,7 +11,8 @@ def home_view(request, *args, **kwargs):
 
 
 def question_detail_view(request, pk,*args, **kwargs):
-    ques_qs = Question.objects.get(pk=pk)
+    ques_qs = get_object_or_404(Question, pk=pk)
+    # ques_qs = Question.objects.get(pk=pk)
     ans_qs = Answer.objects.filter(question=pk)
     context = {
         'ques_object' : ques_qs,

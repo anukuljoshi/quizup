@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block center-content %}
+    <h1>{{ username }}</h1>
+    <h3>{{ object }}</h3>
+
+    {% if user.is_authenticated %}
+        <h3>Authenticated</h3>    
+    {% else %}
+        <h3>Not Authenticated</h3>
+    {% endif %}
+{% endblock center-content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block center-content %}
+    <div class="card p-4 col-md-6 offset-md-3">
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form|crispy }}
+    
+            <div class="text-center">
+                <input type="submit" id="register-submit" value="Submit">
+            </div>
+        </form>
+    </div>
+{% endblock center-content %}
