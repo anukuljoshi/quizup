@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block center-content %}
-    <h1>{{ username }}</h1>
+    <h1>{{ profile_username }}</h1>
     <h3>{{ object }}</h3>
 
     {% if user.is_authenticated %}
@@ -9,4 +9,20 @@
     {% else %}
         <h3>Not Authenticated</h3>
     {% endif %}
+
+    {% if request.user.username == profile_username %}    
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Ask a question
+                </h4>                
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="submit" value="Post">
+                </form>
+            </div>
+        </div>
+    {% endif %}
+
 {% endblock center-content %}

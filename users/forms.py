@@ -13,9 +13,9 @@ class RegistrationForm(forms.ModelForm):
             'password',
         ]
 
-        # attrs = {
-        #     'password' : 
-        # }
+        widgets = {
+            'password' : forms.PasswordInput()
+        }
 
 
 class LoginForm(forms.Form):

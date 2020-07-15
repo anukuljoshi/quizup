@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block center-content %}
     <div class="card pb-4">
@@ -11,7 +12,16 @@
 
     <div class="card mt-4">
         <div class="card-body">
-            <h5 class="card-title">{{ ans_object_list.count }} Answers <hr></h5>
+        
+            <h5 class="card-title">
+                <span class="mr-auto">
+                    {{ ans_object_list.count }} Answers
+                </span>
+                <!-- <span class="ml-auto">
+                    <a href="#">Add an Answer</a>
+                </span> -->
+            </h5>
+            <hr>
                 {% for ans in ans_object_list %}
                     <p>
                         {{ ans.answer }}
@@ -28,6 +38,16 @@
                     </span>
                     <hr>
                 {% endfor %}
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit" value="Answer">
+            </form>
         </div>
     </div>
 {% endblock center-content %}
